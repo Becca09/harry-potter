@@ -8,12 +8,13 @@ const Navbar = () => {
 
     return (
         <Container>
-            
+
             <div>
-                <div className='flex flex-row justify-between px-4 py-7'>
-                    <h1 className='font_bold secondary_text_color text-3xl'>WIZARDS!</h1>
+                <div className='flex flex-row justify-between px-4 py-7 '>
+                    <h1 onClick={() => { router.push("/") }} className='font_bold secondary_text_color text-3xl cursor-pointer'>WIZARDS!</h1>
                     <div className={`sm:block ${showNav ? 'hidden' : ''}`}>
                         <ul className='flex lg:flex-row flex-col primary_text_color cursor-pointer'>
+                            <li onClick={() => { setShowNav(false); router.push("/") }} className="mr-10 lg:border-0 border-b-2 lg:p-o pb-2 ">Home</li>
                             <li onClick={() => { setShowNav(false); router.push("/wizard") }} className="mr-10 lg:border-0 border-b-2 lg:p-o pb-2 ">Wizards</li>
                             <li onClick={() => { setShowNav(false); router.push("/spell") }} className="mr-10 lg:mt-0  mt-10  lg:border-0 border-b-2 lg:p-o pb-2   ">Spells</li>
                             <li onClick={() => { setShowNav(false); router.push("/elixir") }} className='lg:mt-0 mt-10 lg:border-0 border-b-2 lg:p-o pb-2 lg:mr-0 mr-10'>Elixirs</li>

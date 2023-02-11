@@ -57,7 +57,7 @@ const SpellDetails: NextPage = () => {
           {loading && <p className="loading loading_text">Loading...</p>}
           {error && <p>{error}</p>}
 
-          <div>
+          <div className="flex flex-col lg:flex-row mt-6">
             <Dropdown
               options={[
                 ...wizards?.map((wizard) => {
@@ -69,11 +69,12 @@ const SpellDetails: NextPage = () => {
               ]}
               onchange={handleSelectWizard}
               defaultOption={"Assign to a wizrd"}
-              styling={"lg:mt-0 mt-10 p-5  w-72 rounded"}
+              styling={"lg:mt-0 mt-10 p-5   rounded"}
             />
             <button
               onClick={handleAssignSpellToWizard}
               disabled={!selectedWizardId}
+              className ="secondary_bg_color primary_text_color p-5 rouded ml-5 rounded font-bold"
             >
               Assign Spell
             </button>

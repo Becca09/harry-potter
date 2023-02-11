@@ -7,10 +7,12 @@ import { NextPage } from "next";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { MutatedWizard } from "@/interfaces/Wizard";
+import Navbar from "@/components/common/layouts/Navbar";
+import WizardItemContainer from "@/components/modules/wizard/WizardItemContainer";
 
 const Wizard: NextPage = () => {
   const [inputValue, setInputValue] = useState("");
-  const [filteredWizards, setFilteredWizards] = useState<MutatedWizard[]>();
+  const [filteredWizards, setFilteredWizards] = useState<MutatedWizard[]>([]);
 
   const handleInputChange = (value: string) => {
     setInputValue(value);
@@ -44,6 +46,7 @@ const Wizard: NextPage = () => {
       >
         <Container>
           <div>
+            <Navbar />
             <Intro
               name="Wizards"
               definition=" A wizard is a kind of magician. A wise man who can perform magic spells in a fairy tale or fantasy novel is often described as a wizard. "
@@ -55,31 +58,9 @@ const Wizard: NextPage = () => {
               styling={"p-5 rounded mt-10"}
             />
 
-            <ul>
-              {inputValue.length
-                ? filteredWizards?.map((wizard) => {
-                    return (
-                      <li
-                        key={wizard.id}
-                        className="text-white"
-                        onClick={() => router.push(`/wizard/${wizard.id}`)}
-                      >
-                        {`${wizard.lastName} ${wizard.firstName}`}
-                      </li>
-                    );
-                  })
-                : wizards.map((wizard) => {
-                    return (
-                      <li
-                        key={wizard.id}
-                        className="text-white"
-                        onClick={() => router.push(`/wizard/${wizard.id}`)}
-                      >
-                        {`${wizard.lastName} ${wizard.firstName}`}
-                      </li>
-                    );
-                  })}
-            </ul> 
+            {inputValue.length
+              ? <WizardItemContainer data={filteredWizards} />
+              : <WizardItemContainer data={wizards} />}
           </div>
         </Container>
       </div>
